@@ -1,14 +1,25 @@
 from fastapi import FastAPI
-from app.database.session import engine, Base
-from app.database import models
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from app.api.router import router as api_router
 
+app = FastAPI(title="Mini Bank API", description="API для управления мини-банком")
 
-@app.on_event("startup")
-async def on_startup():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(api_router)
 
 
 @app.get("/")
