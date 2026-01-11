@@ -1,0 +1,16 @@
+[project]
+name = "mini-bank"
+version = "1.0.0"
+description = "Mini bank"
+authors = [{ name = "Akxios" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "alembic>=1.18.0",
+    "cachetools>=6.2.4",
+    "fastapi>=0.128.0",
+    "pydantic-settings>=2.12.0",
+    "sqlalchemy>=2.0.45",
+    "uvicorn[standard]>=0.40.0",
+]
