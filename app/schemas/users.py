@@ -1,5 +1,4 @@
-from fastapi import Form
-from pydantic import BaseModel, Field, model_validator, EmailStr
+from pydantic import BaseModel, Field, EmailStr
 
 
 class UserCreate(BaseModel):
